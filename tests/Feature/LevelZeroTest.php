@@ -36,7 +36,7 @@ class LevelZeroTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
+    public function test_user_count()
     {
         $this->assertCount(40, $this->customers, 'There should be 40 users with role customers.');
         $this->assertLessThanOrEqual(10, $this->admins, 'There can only be 10 admin users.');
