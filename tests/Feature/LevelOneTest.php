@@ -21,27 +21,33 @@ class LevelOneTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_standard_user_signature ()
+    public function test_standard_user_signature()
     {
         $user = new User([
-            'name' => 'Lakshay Verma',
-            'email' => 'LaKshay.VerMa@waLKwel.IN'
+            'name' => 'Developer Walkwel',
+            'email' => 'Developer.Walkwel@waLKwel.IN'
         ]);
 
-        $this->assertEquals($user->signature, 'Lakshay Verma <lakshay.verma@walkwel.in>', 'User signature to follow standard.');
+        $this->assertEquals($user->signature, 'Developer Walkwel <developer.walkwel@walkwel.in>', 'User signature to follow standard.');
     }
 
 
-    public function test_user_signature ()
+    public function test_user_signature()
     {
         $user = new User([
-            'name' => 'Lakshay Verma',
-            'email' => 'lakshay.verma@walkwel.in'
+            'name' => 'Developer Walkwel',
+            'email' => 'developer.walkwel@walkwel.in'
         ]);
 
-        $this->assertEquals($user->signature, 'Lakshay Verma <lakshay.verma@walkwel.in>', 'User signature to follow standard.');
+        $user2 = new User([
+            'name' => 'WALKWEL tech',
+            'email' => 'Tech.Walkwel@waLKwel.in'
+            ]);
 
-        $user->email = 'LaKshay.VerMa@waLKwel.IN';
-        $this->assertEquals($user->signature, 'Lakshay Verma <lakshay.verma@walkwel.in>', 'User signature to follow standard.');
+        $this->assertEquals($user->signature, 'Developer Walkwel <developer.walkwel@walkwel.in>', 'User signature to follow standard.');
+        $user->email = 'Developer.Walkwel@waLKwel.IN';
+        $this->assertEquals($user->signature, 'Developer Walkwel <developer.walkwel@walkwel.in>', 'User signature to follow standard.');
+
+        $this->assertEquals($user2->signature, 'Walkwel Tech <tech.walkwel@walkwel.in>', 'User signature to follow standard.');
     }
 }
